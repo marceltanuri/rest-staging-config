@@ -15,6 +15,6 @@ Then...
 - If it is all set with your request, the staging remote addres in the portal configurations will be updated for you with the given parameters.
 
 A curl example:
-- curl -d "groupId=10182&target=new-target.com&username=admin&password=admin123" -X POST http://localhost:8080/rest-staging-config-1.0.0/rest/staging-target
+```curl -d "groupId=10182&target=new-target.com&username=admin&password=admin123" -X POST http://localhost:8080/rest-staging-config-1.0.0/rest/staging-target```
 
 Nice to meet you!
