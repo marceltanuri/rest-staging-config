@@ -3,6 +3,6 @@
 
 <display>
 	<category name="category.sample">
-		<portlet id="switch-staging-target" />
+		<portlet id="rest-staging-config" />
 	</category>
 </display>

@@ -14,9 +14,9 @@
 			<mime-type>text/html</mime-type>
 		</supports>
 		<portlet-info>
-			<title>switch-staging-target</title>
-			<short-title>switch-staging-target</short-title>
-			<keywords>switch-staging-target</keywords>
+			<title>rest-staging-config</title>
+			<short-title>rest-staging-config</short-title>
+			<keywords>rest-staging-config</keywords>
 		</portlet-info>
 		<security-role-ref>
 			<role-name>administrator</role-name>
