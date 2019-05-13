@@ -26,45 +26,73 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.liferay.portal.kernel.cache.CacheRegistryUtil;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.model.Group;
 import com.liferay.portal.service.GroupLocalServiceUtil;
 
 @Controller
 @RequestMapping("/staging-target")
 public class RESTController {
-	
+
 	@Autowired
 	Authentication authentication;
-	
+
+	@Autowired
+	ClientUtil clientUtil;
+
+	private static Log _log = LogFactoryUtil.getLog(RESTController.class);
+
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@RequestMapping(method = RequestMethod.POST)
 	public @ResponseBody ResponseEntity<?> updateStagingRemoteAddres(HttpServletRequest request,
-            HttpServletResponse response) {
-		
-		if(!authentication.isAuthenticated(request)) {
+			HttpServletResponse response) {
+
+		_log.info(
+				"Recieved request from: " + clientUtil.getIPAddress(request) + " for updating staging remote address.");
+		_log.info("Request params: " + clientUtil.getRequestParameters(request));
+
+		if (!authentication.isAuthenticated(request)) {
+			_log.info("The request was reject due to invalid authentication");
 			return new ResponseEntity<String>(HttpStatus.UNAUTHORIZED);
 		}
 
 		try {
 			String groupId = request.getParameter("groupId");
-			String target = request.getParameter("target");
+			String target = clientUtil.preventXSS(request.getParameter("target"));
+
+			if (groupId == null || groupId.isEmpty() || target == null || target.isEmpty()) {
+				_log.info("The request was reject due to bad request");
+				return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+			}
+
 			Group group = GroupLocalServiceUtil.getGroup(Long.valueOf(groupId));
 			String[] typeSettings = group.getTypeSettings().split(System.getProperty("line.separator"));
-			
+
 			for (String typeSetting : typeSettings) {
-				if (typeSetting.startsWith("remoteAddress")) {
-					group.setTypeSettings(group.getTypeSettings().replace(typeSetting, typeSetting.split("=")[0] + "=" + target));
+				if (typeSetting.startsWith("remoteAddress=")) {
+
+					String newSettings = group.getTypeSettings().replace(typeSetting,
+							"remoteAddress=" + target);
+					
+					group.setTypeSettings(newSettings);
+					
 					GroupLocalServiceUtil.updateGroup(group);
+					
 					CacheRegistryUtil.clear();
+					
+					_log.info("Staging remote address has been updated! The request was sent from: "
+							+ clientUtil.getIPAddress(request) + ".");
 					break;
 				}
 			}
+			
 			return new ResponseEntity(group.getTypeSettings(), HttpStatus.OK);
+			
 		} catch (Exception e) {
+			_log.info("The request was reject due to bad request");
 			e.printStackTrace();
 			return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
-
 	}
-
 }
