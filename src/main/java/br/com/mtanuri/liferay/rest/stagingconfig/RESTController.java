@@ -38,7 +38,7 @@ public class RESTController {
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@RequestMapping(method = RequestMethod.POST)
-	public @ResponseBody ResponseEntity<?> getShopInJSON(HttpServletRequest request,
+	public @ResponseBody ResponseEntity<?> updateStagingRemoteAddres(HttpServletRequest request,
             HttpServletResponse response) {
 		
 		if(!authentication.isAuthenticated(request)) {
