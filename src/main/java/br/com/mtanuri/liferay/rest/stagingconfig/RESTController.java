@@ -53,8 +53,9 @@ public class RESTController {
 		_log.info("Request params: " + clientUtil.getRequestParameters(request));
 
 		if (!authentication.isAuthenticated(request)) {
-			_log.info("The request was reject due to invalid authentication");
-			return new ResponseEntity<String>(HttpStatus.UNAUTHORIZED);
+			String msg = "The request was reject due to invalid authentication";
+			_log.info(msg);
+			return new ResponseEntity<String>(msg, HttpStatus.UNAUTHORIZED);
 		}
 
 		try {
@@ -62,8 +63,9 @@ public class RESTController {
 			String target = clientUtil.preventXSS(request.getParameter("target"));
 
 			if (groupId == null || groupId.isEmpty() || target == null || target.isEmpty()) {
-				_log.info("The request was reject due to bad request");
-				return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+				String msg = "The request was reject due to bad request";
+				_log.info(msg);
+				return new ResponseEntity<String>(msg, HttpStatus.BAD_REQUEST);
 			}
 
 			Group group = GroupLocalServiceUtil.getGroup(Long.valueOf(groupId));
@@ -90,9 +92,9 @@ public class RESTController {
 			return new ResponseEntity(group.getTypeSettings(), HttpStatus.OK);
 			
 		} catch (Exception e) {
-			_log.info("The request was reject due to bad request");
-			e.printStackTrace();
-			return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+			String msg = "The request was reject due to bad request"+ ": " + e.getMessage();
+			_log.info(msg);
+			return new ResponseEntity<String>(msg, HttpStatus.BAD_REQUEST);
 		}
 	}
 }
