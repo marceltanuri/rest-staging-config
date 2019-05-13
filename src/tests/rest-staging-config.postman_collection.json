@@ -1,0 +1,639 @@
+{
+	"info": {
+		"_postman_id": "22d0acd9-4dd9-4c97-906c-5b954989993b",
+		"name": "rest-staging-config",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8020/rest-staging-config-1.0.0/rest/staging-target",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5ad2797c-8a9d-41e4-8514-c1136fd5541c",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "test",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "test@liferay.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "groupId",
+							"value": "10182",
+							"type": "text"
+						},
+						{
+							"key": "target",
+							"value": "pub-blue.smiles.com.br",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "admin123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8020/rest-staging-config-1.0.0/rest/staging-target",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8020",
+					"path": [
+						"rest-staging-config-1.0.0",
+						"rest",
+						"staging-target"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8020/rest-staging-config-1.0.0/rest/staging-target",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5ad2797c-8a9d-41e4-8514-c1136fd5541c",
+						"exec": [
+							"pm.test(\"Status code is 401\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "groupId",
+							"value": "10182",
+							"type": "text"
+						},
+						{
+							"key": "target",
+							"value": "pub-blue.smiles.com.br",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "admina",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "admin123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8020/rest-staging-config-1.0.0/rest/staging-target",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8020",
+					"path": [
+						"rest-staging-config-1.0.0",
+						"rest",
+						"staging-target"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8020/rest-staging-config-1.0.0/rest/staging-target",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5ad2797c-8a9d-41e4-8514-c1136fd5541c",
+						"exec": [
+							"pm.test(\"Status code is 401\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "groupId",
+							"value": "10182",
+							"type": "text"
+						},
+						{
+							"key": "target",
+							"value": "pub-blue.smiles.com.br",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "admin1234",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8020/rest-staging-config-1.0.0/rest/staging-target",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8020",
+					"path": [
+						"rest-staging-config-1.0.0",
+						"rest",
+						"staging-target"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8020/rest-staging-config-1.0.0/rest/staging-target",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5ad2797c-8a9d-41e4-8514-c1136fd5541c",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "groupId",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "target",
+							"value": "pub-blue.smiles.com.br",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "admin123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8020/rest-staging-config-1.0.0/rest/staging-target",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8020",
+					"path": [
+						"rest-staging-config-1.0.0",
+						"rest",
+						"staging-target"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8020/rest-staging-config-1.0.0/rest/staging-target",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5ad2797c-8a9d-41e4-8514-c1136fd5541c",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "groupId",
+							"value": "10182",
+							"type": "text"
+						},
+						{
+							"key": "target",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "admin123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8020/rest-staging-config-1.0.0/rest/staging-target",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8020",
+					"path": [
+						"rest-staging-config-1.0.0",
+						"rest",
+						"staging-target"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8020/rest-staging-config-1.0.0/rest/staging-target",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5ad2797c-8a9d-41e4-8514-c1136fd5541c",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "groupId",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "target",
+							"value": "pub-blue.smiles.com.br",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "admin123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8020/rest-staging-config-1.0.0/rest/staging-target",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8020",
+					"path": [
+						"rest-staging-config-1.0.0",
+						"rest",
+						"staging-target"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8020/rest-staging-config-1.0.0/rest/staging-target",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5ad2797c-8a9d-41e4-8514-c1136fd5541c",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"remoteAddress=&lt;script&gt;\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "groupId",
+							"value": "10182",
+							"type": "text"
+						},
+						{
+							"key": "target",
+							"value": "<script>",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "admin123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8020/rest-staging-config-1.0.0/rest/staging-target",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8020",
+					"path": [
+						"rest-staging-config-1.0.0",
+						"rest",
+						"staging-target"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8020/rest-staging-config-1.0.0/rest/staging-target",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5ad2797c-8a9d-41e4-8514-c1136fd5541c",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"remoteAddress=pub-blue.smiles.com.br\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "groupId",
+							"value": "10182",
+							"type": "text"
+						},
+						{
+							"key": "target",
+							"value": "pub-blue.smiles.com.br",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "admin123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8020/rest-staging-config-1.0.0/rest/staging-target",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8020",
+					"path": [
+						"rest-staging-config-1.0.0",
+						"rest",
+						"staging-target"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8020/rest-staging-config-1.0.0/rest/staging-target",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5ad2797c-8a9d-41e4-8514-c1136fd5541c",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"remoteAddress=pub-green.smiles.com.br\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "groupId",
+							"value": "10182",
+							"type": "text"
+						},
+						{
+							"key": "target",
+							"value": "pub-green.smiles.com.br",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "admin123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8020/rest-staging-config-1.0.0/rest/staging-target",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8020",
+					"path": [
+						"rest-staging-config-1.0.0",
+						"rest",
+						"staging-target"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
