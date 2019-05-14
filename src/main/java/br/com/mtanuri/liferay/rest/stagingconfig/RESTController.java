@@ -60,10 +60,16 @@ public class RESTController {
 
 		try {
 			String groupId = request.getParameter("groupId");
-			String target = securityUtil.preventXSS(request.getParameter("target"));
+			String target = request.getParameter("target");
 
 			if (groupId == null || groupId.isEmpty() || target == null || target.isEmpty()) {
 				String msg = "The request was reject due to bad request";
+				_log.info(msg);
+				return new ResponseEntity<String>(msg, HttpStatus.BAD_REQUEST);
+			}
+			
+			if(!securityUtil.isValidTargetHost(target)) {
+				String msg = "The request was reject. It is not a valid target host. Check the rest-staging-config project for more details (readme)";
 				_log.info(msg);
 				return new ResponseEntity<String>(msg, HttpStatus.BAD_REQUEST);
 			}
