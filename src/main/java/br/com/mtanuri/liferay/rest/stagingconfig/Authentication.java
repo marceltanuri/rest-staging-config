@@ -2,7 +2,6 @@ package br.com.mtanuri.liferay.rest.stagingconfig;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.liferay.portal.kernel.log.Log;
@@ -18,12 +17,6 @@ import com.liferay.portal.service.UserLocalServiceUtil;
 public class Authentication {
 
 	private static final String ADMINISTRATOR_ROLE = "Administrator";
-
-	@Value("${auth.username}")
-	private String authUsername;
-
-	@Value("${auth.password}")
-	private String authPassword;
 
 	private static Log _log = LogFactoryUtil.getLog(Authentication.class);
 
