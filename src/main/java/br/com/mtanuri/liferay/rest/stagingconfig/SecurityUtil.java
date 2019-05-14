@@ -8,7 +8,7 @@ import org.apache.commons.text.StringEscapeUtils;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ClientUtil {
+public class SecurityUtil {
 
 	public String getIPAddress(HttpServletRequest request) {
 		String ipAddress = request.getHeader("X-FORWARDED-FOR");

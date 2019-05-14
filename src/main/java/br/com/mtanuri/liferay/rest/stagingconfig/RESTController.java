@@ -39,7 +39,7 @@ public class RESTController {
 	Authentication authentication;
 
 	@Autowired
-	ClientUtil clientUtil;
+	SecurityUtil securityUtil;
 
 	private static Log _log = LogFactoryUtil.getLog(RESTController.class);
 
@@ -49,8 +49,8 @@ public class RESTController {
 			HttpServletResponse response) {
 
 		_log.info(
-				"Recieved request from: " + clientUtil.getIPAddress(request) + " for updating staging remote address.");
-		_log.info("Request params: " + clientUtil.getRequestParameters(request));
+				"Recieved request from: " + securityUtil.getIPAddress(request) + " for updating staging remote address.");
+		_log.info("Request params: " + securityUtil.getRequestParameters(request));
 
 		if (!authentication.isAuthenticated(request)) {
 			String msg = "The request was reject due to invalid authentication";
@@ -60,7 +60,7 @@ public class RESTController {
 
 		try {
 			String groupId = request.getParameter("groupId");
-			String target = clientUtil.preventXSS(request.getParameter("target"));
+			String target = securityUtil.preventXSS(request.getParameter("target"));
 
 			if (groupId == null || groupId.isEmpty() || target == null || target.isEmpty()) {
 				String msg = "The request was reject due to bad request";
@@ -84,7 +84,7 @@ public class RESTController {
 					CacheRegistryUtil.clear();
 					
 					_log.info("Staging remote address has been updated! The request was sent from: "
-							+ clientUtil.getIPAddress(request) + ".");
+							+ securityUtil.getIPAddress(request) + ".");
 					break;
 				}
 			}
