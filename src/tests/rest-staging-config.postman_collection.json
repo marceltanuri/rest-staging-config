@@ -15,6 +15,10 @@
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"remoteAddress=localhost\");",
 							"});"
 						],
 						"type": "text/javascript"
@@ -56,17 +60,17 @@
 						},
 						{
 							"key": "target",
-							"value": "pub-blue.smiles.com.br",
+							"value": "localhost",
 							"type": "text"
 						},
 						{
 							"key": "username",
-							"value": "admin",
+							"value": "test@liferay.com",
 							"type": "text"
 						},
 						{
 							"key": "password",
-							"value": "admin123",
+							"value": "test",
 							"type": "text"
 						}
 					]
@@ -123,7 +127,7 @@
 						},
 						{
 							"key": "target",
-							"value": "pub-blue.smiles.com.br",
+							"value": "localhost",
 							"type": "text"
 						},
 						{
@@ -190,7 +194,7 @@
 						},
 						{
 							"key": "target",
-							"value": "pub-blue.smiles.com.br",
+							"value": "127.0.0.1",
 							"type": "text"
 						},
 						{
@@ -229,8 +233,8 @@
 					"script": {
 						"id": "5ad2797c-8a9d-41e4-8514-c1136fd5541c",
 						"exec": [
-							"pm.test(\"Status code is 400\", function () {",
-							"    pm.response.to.have.status(400);",
+							"pm.test(\"Status code is 401\", function () {",
+							"    pm.response.to.have.status(401);",
 							"});"
 						],
 						"type": "text/javascript"
@@ -257,7 +261,7 @@
 						},
 						{
 							"key": "target",
-							"value": "pub-blue.smiles.com.br",
+							"value": "localhost",
 							"type": "text"
 						},
 						{
@@ -329,12 +333,12 @@
 						},
 						{
 							"key": "username",
-							"value": "admin",
+							"value": "test@liferay.com",
 							"type": "text"
 						},
 						{
 							"key": "password",
-							"value": "admin123",
+							"value": "test",
 							"type": "text"
 						}
 					]
@@ -386,22 +390,22 @@
 					"urlencoded": [
 						{
 							"key": "groupId",
-							"value": "0",
+							"value": "10182",
 							"type": "text"
 						},
 						{
 							"key": "target",
-							"value": "pub-blue.smiles.com.br",
+							"value": "teste",
 							"type": "text"
 						},
 						{
 							"key": "username",
-							"value": "admin",
+							"value": "test@liferay.com",
 							"type": "text"
 						},
 						{
 							"key": "password",
-							"value": "admin123",
+							"value": "test",
 							"type": "text"
 						}
 					]
@@ -430,13 +434,10 @@
 					"script": {
 						"id": "5ad2797c-8a9d-41e4-8514-c1136fd5541c",
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {",
-							"    pm.response.to.have.status(200);",
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
 							"});",
-							"",
-							"pm.test(\"Body matches string\", function () {",
-							"    pm.expect(pm.response.text()).to.include(\"remoteAddress=&lt;script&gt;\");",
-							"});"
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -467,12 +468,12 @@
 						},
 						{
 							"key": "username",
-							"value": "admin",
+							"value": "test@liferay.com",
 							"type": "text"
 						},
 						{
 							"key": "password",
-							"value": "admin123",
+							"value": "test",
 							"type": "text"
 						}
 					]
@@ -506,7 +507,7 @@
 							"});",
 							"",
 							"pm.test(\"Body matches string\", function () {",
-							"    pm.expect(pm.response.text()).to.include(\"remoteAddress=pub-blue.smiles.com.br\");",
+							"    pm.expect(pm.response.text()).to.include(\"remoteAddress=127.0.0.1\");",
 							"});"
 						],
 						"type": "text/javascript"
@@ -533,17 +534,17 @@
 						},
 						{
 							"key": "target",
-							"value": "pub-blue.smiles.com.br",
+							"value": "127.0.0.1",
 							"type": "text"
 						},
 						{
 							"key": "username",
-							"value": "admin",
+							"value": "test@liferay.com",
 							"type": "text"
 						},
 						{
 							"key": "password",
-							"value": "admin123",
+							"value": "test",
 							"type": "text"
 						}
 					]
@@ -577,7 +578,7 @@
 							"});",
 							"",
 							"pm.test(\"Body matches string\", function () {",
-							"    pm.expect(pm.response.text()).to.include(\"remoteAddress=pub-green.smiles.com.br\");",
+							"    pm.expect(pm.response.text()).to.include(\"remoteAddress=localhost\");",
 							"});"
 						],
 						"type": "text/javascript"
@@ -604,17 +605,17 @@
 						},
 						{
 							"key": "target",
-							"value": "pub-green.smiles.com.br",
+							"value": "localhost",
 							"type": "text"
 						},
 						{
 							"key": "username",
-							"value": "admin",
+							"value": "test@liferay.com",
 							"type": "text"
 						},
 						{
 							"key": "password",
-							"value": "admin123",
+							"value": "test",
 							"type": "text"
 						}
 					]
