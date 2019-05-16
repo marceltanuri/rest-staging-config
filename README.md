@@ -4,7 +4,7 @@ Hi!
 
 I'm a RESTFull Liferay Portlet for setting up portal's staging remote configuration.
 
-How am I work?
+How do I work?
 - You give me a POST request with the parameters:
   - groupId: the groupID of the site in Liferay portal
   - target: a valid remote address which is set in the application.properties file.
