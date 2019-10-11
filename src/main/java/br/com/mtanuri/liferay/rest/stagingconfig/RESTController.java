@@ -32,7 +32,6 @@ import com.liferay.portal.model.Group;
 import com.liferay.portal.service.GroupLocalServiceUtil;
 
 @Controller
-@RequestMapping("/staging-target")
 public class RESTController {
 
 	@Autowired
@@ -44,7 +43,7 @@ public class RESTController {
 	private static Log _log = LogFactoryUtil.getLog(RESTController.class);
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(value = "/staging-target", method = RequestMethod.POST)
 	public @ResponseBody ResponseEntity<?> updateStagingRemoteAddres(HttpServletRequest request,
 			HttpServletResponse response) {
 
@@ -96,6 +95,36 @@ public class RESTController {
 			}
 			
 			return new ResponseEntity(group.getTypeSettings(), HttpStatus.OK);
+			
+		} catch (Exception e) {
+			String msg = "The request was reject due to bad request"+ ": " + e.getMessage();
+			_log.info(msg);
+			return new ResponseEntity<String>(msg, HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@RequestMapping(value = "/reindex", method = RequestMethod.POST)
+	public @ResponseBody ResponseEntity<?> reindex(HttpServletRequest request,
+			HttpServletResponse response) {
+
+		_log.info(
+				"Recieved request from: " + securityUtil.getIPAddress(request) + " for reindexing DL.");
+		_log.info("Request params: " + securityUtil.getRequestParameters(request));
+
+		if (!authentication.isAuthenticated(request)) {
+			String msg = "The request was reject due to invalid authentication";
+			_log.info(msg);
+			return new ResponseEntity<String>(msg, HttpStatus.UNAUTHORIZED);
+		}
+
+		try {
+
+			Thread t1 = new Thread(new ReindexRunner());
+			t1.start();
+			
+			
+			return new ResponseEntity("Reindex in execution", HttpStatus.OK);
 			
 		} catch (Exception e) {
 			String msg = "The request was reject due to bad request"+ ": " + e.getMessage();
