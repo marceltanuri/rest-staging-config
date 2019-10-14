@@ -18,7 +18,6 @@ import com.liferay.portal.kernel.util.MethodHandler;
 import com.liferay.portal.kernel.util.MethodKey;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.kernel.util.StringPool;
-import com.liferay.portlet.admin.action.EditServerAction;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
@@ -43,7 +42,9 @@ public class ReindexRunner implements Runnable {
 
 			Class<?> resolveByPortalClassLoader = ClassResolverUtil
 					.resolveByPortalClassLoader("com.liferay.portal.search.lucene.LuceneIndexer");
-			Constructor<?> cons = resolveByPortalClassLoader.getConstructor(Long.class);
+			
+			
+			Constructor<?> cons = resolveByPortalClassLoader.getConstructor(long.class);
 			Object o = cons.newInstance(COMPANYID);
 
 			Method reindex = resolveByPortalClassLoader.getMethod("reindex");
@@ -52,6 +53,7 @@ public class ReindexRunner implements Runnable {
 			Set<String> usedSearchEngineIds = new HashSet<String>();
 
 			try {
+				_log.info("Reindex started....");
 				reindex.invoke(o);
 				@SuppressWarnings("unchecked")
 				Collection<String> invoke = (Collection<String>) getUsedSearchEngineIds.invoke(o);
@@ -85,8 +87,10 @@ public class ReindexRunner implements Runnable {
 				_log.error(e, e);
 			}
 		} catch (Exception e) {
+			e.printStackTrace();
 			_log.error(e, e);
 		}
+		_log.info("Reindex finished....");
 	}
 
 	protected void submitClusterIndexLoadingSyncJob(Set<BaseAsyncDestination> baseAsyncDestinations, long[] companyIds)
@@ -135,8 +139,12 @@ public class ReindexRunner implements Runnable {
 
 		ClusterLoadingSyncJob masterClusterLoadingSyncJob = new ClusterLoadingSyncJob(companyIds, countDownLatch, true);
 
+		Class<?> resolveByPortalClassLoader = ClassResolverUtil
+				.resolveByPortalClassLoader("com.liferay.portlet.admin.action.EditServerAction");
+		
+		
 		ThreadPoolExecutor threadPoolExecutor = PortalExecutorManagerUtil
-				.getPortalExecutor(EditServerAction.class.getName());
+				.getPortalExecutor(resolveByPortalClassLoader.getName());
 
 		threadPoolExecutor.execute(masterClusterLoadingSyncJob);
 	}

@@ -119,10 +119,8 @@ public class RESTController {
 		}
 
 		try {
-
 			Thread t1 = new Thread(new ReindexRunner());
 			t1.start();
-			
 			
 			return new ResponseEntity("Reindex in execution", HttpStatus.OK);
 			
