@@ -2,7 +2,7 @@
 
 Hi!
 
-I'm a RESTFull Liferay Portlet for setting up portal's staging remote configuration.
+I'm a RESTFull Liferay 6.2 Portlet for setting up portal's staging remote configuration.
 
 How do I work?
 - You give me a POST request with the parameters:
